@@ -1,0 +1,43 @@
+@import "../utilities/functions";
+.converter {
+  &__numberToCal {
+    @include font(14px, 400);
+  }
+  &__input {
+    width: 70%;
+    color: white;
+    background-color: $firstColor;
+    border-bottom: 2px solid white;
+    @include marginExact(16px, 10px, 0, 12px);
+    @include font(14px, 400);
+    @include desktopAll() {
+      @include marginExact(19px, 0, 0, 38px);
+      width: 35%;
+    }
+  }
+  &__calcule {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 19px;
+    margin-right: 35px;
+
+    &--favourite {
+      background-color: $firstColor;
+      margin-left: 12px;
+      @include desktopAll() {
+        margin-left: 38px;
+      }
+    }
+  }
+  &__result {
+    display: flex;
+    padding-left: 50px;
+    &--title {
+      @include font(24px, 700);
+    }
+    &--measureTo {
+      @include font(16px, 700);
+      @include marginExact(8px, 0, 0, 12px);
+    }
+  }
+}

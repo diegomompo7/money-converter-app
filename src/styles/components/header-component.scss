@@ -1,0 +1,23 @@
+@import "../utilities/mixins";
+@import "../utilities/functions";
+
+.header{
+    background-color: $secondColor;
+    color: $firstColor;
+    height: 48px;
+    display: flex;
+    @include shadow(0px, 2px, 4px, 0px, $thirdColor);
+
+    @include desktopAll() {
+        justify-content: center;
+      }
+
+    &__svg{
+        @include marginExact(9px, 0, 0, 10px)
+    }
+
+    &__title{
+        @include font(20px, 900);
+        @include marginExact(9px, 0, 0, 12px)
+    }
+}

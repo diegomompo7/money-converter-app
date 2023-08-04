@@ -1,0 +1,41 @@
+@import "../utilities/mixins";
+@import "../utilities/functions";
+
+.select {
+  background-color: $firstColor;
+  color: $fouthColor;
+  border-radius: 21px;
+  @include sizeBox(298px, 209px);
+  @include marginRowColumn(23px, auto);
+  @include shadow(0,0,8,3, $fifthColor);
+
+  @include desktopAll() {
+    @include sizeBox(717px, 193px);
+  }
+
+  &__title {
+    @include font(24px, 600);
+    @include padding(11px, 0, 0, 12px);
+
+    @include desktopAll() {
+      @include padding(24px, 0, 0, 38px);
+    }
+  }
+
+  &__item{
+    width: 70%;
+    color: white;
+    background-color: $firstColor;
+    border-bottom: 2px solid white;
+    @include font(14px, 400);
+    @include marginExact(15px, 0, 0, 12px);
+    @include desktopAll() {
+      @include marginExact(21px, 0, 0, 38px);
+      width: 35%;
+    }
+  }
+  &__change{
+    background-color: $firstColor;
+    margin-left: 15px;
+  }
+}

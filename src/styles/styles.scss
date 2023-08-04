@@ -1,3 +1,7 @@
 @import 'base/_reset';
 @import 'base/_typo';
 @import 'layouts/home-layout';
+@import 'components/header-component';
+@import 'components/converter-component';
+@import 'components/selectConverter-component';
+@import 'utilities/_mixins';

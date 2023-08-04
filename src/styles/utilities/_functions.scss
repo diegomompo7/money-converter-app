@@ -1,0 +1,20 @@
+@mixin marginExact($top, $right, $bottom, $left) {
+    margin: $top $right $bottom $left;
+}
+@mixin marginRowColumn($row, $column) {
+    margin: $row $column;
+}
+@mixin padding($top, $right, $bottom, $left) {
+    padding: $top $right $bottom $left;
+}
+@mixin shadow($hor, $ver, $blur, $spread, $color) {
+    box-shadow: $hor $ver $blur $spread $color;
+}
+@mixin font($size, $weight){
+    font-size: $size;
+    font-weight: $weight;
+}
+@mixin sizeBox($width, $height){
+    width:$width;
+    height: $height;
+}
