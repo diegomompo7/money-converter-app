@@ -18,3 +18,9 @@
     width:$width;
     height: $height;
 }
+@mixin flexible( $dis , $just , $align, $direction , $cut ){
+    display         : $dis;
+    justify-content : $just;
+    align-items     : $align;
+    flex-flow       : $direction $cut;
+  }

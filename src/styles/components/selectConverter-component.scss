@@ -10,7 +10,8 @@
   @include shadow(0,0,8,3, $fifthColor);
 
   @include desktopAll() {
-    @include sizeBox(717px, 193px);
+    @include sizeBox(717px, 200px);
+
   }
 
   &__title {
@@ -23,19 +24,19 @@
   }
 
   &__item{
-    width: 70%;
-    color: white;
+    @include sizeBox(70%, empty());
+    color: $fouthColor;
     background-color: $firstColor;
-    border-bottom: 2px solid white;
+    border-bottom: 2px solid $fouthColor;
     @include font(14px, 400);
     @include marginExact(15px, 0, 0, 12px);
     @include desktopAll() {
       @include marginExact(21px, 0, 0, 38px);
-      width: 35%;
+      @include sizeBox(35%, empty());
     }
   }
   &__change{
     background-color: $firstColor;
-    margin-left: 15px;
+    @include marginExact(0, 0, 0, 15px);
   }
 }

@@ -1,0 +1,12 @@
+.footer{
+    background-color: $firstColor;
+    @include flexible(flex, center, empty(), empty(), empty());
+    @include sizeBox(empty(), 39px);
+
+
+    &__title{
+        color: $fouthColor;
+        @include font(12px, 400);
+        @include marginExact(11px, 31px, 10px, 0);
+    }
+}
