@@ -18,6 +18,17 @@ function SelectConverter(props) {
     { value: "6", from: "inches", to: "cm", calculated: "2.54", text: "inches--> cm" },
   ];
 
+  const getMeasure = localStorage.getItem("favourite");
+  console.log(getMeasure);
+  if (getMeasure !== "") {
+    const arrayGetMeasure = getMeasure.split(",");
+    if (props.savedMeasure.length === 0) {
+      if (arrayGetMeasure.length !== 0) {
+        props.setSavedMeasure(arrayGetMeasure);
+      }
+    }
+  }
+
   function measure() {
     const measureValue = parseInt(selectRef.current.value);
 

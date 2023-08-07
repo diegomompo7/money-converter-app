@@ -2,6 +2,8 @@
 /* eslint-disable react/prop-types */
 
 function Favourite(props) {
+  localStorage.setItem("favourite", props.savedMeasure);
+
   function deleteFavourite(measure) {
     console.log(measure);
     props.setSavedMeasure(props.savedMeasure.filter((delMeasure) => delMeasure !== measure));
