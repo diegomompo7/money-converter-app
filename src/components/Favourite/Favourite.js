@@ -7,6 +7,26 @@ function Favourite(props) {
   function deleteFavourite(measure) {
     console.log(measure);
     props.setSavedMeasure(props.savedMeasure.filter((delMeasure) => delMeasure !== measure));
+
+    const API_URL_DELETE_FAVOURITE = `${process.env.REACT_APP_API_URL}/measure/${measure._id}`;
+
+    fetch(API_URL_DELETE_FAVOURITE, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then(async (response) => {
+        console.log(response.json)
+        return await response.json();
+      })
+      .then(() => {
+        props.fetchMeasure();
+      })
+      .catch((error) => {
+        alert("Ha ocurrido un error en la petición");
+        console.error(error);
+      });
   }
 
   console.log(props.savedMeasure);

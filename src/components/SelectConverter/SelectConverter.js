@@ -4,7 +4,6 @@ import React, { useRef, useState } from "react";
 
 function SelectConverter(props) {
   const [selectedMeasure, setSelectedMeasure] = useState([]);
-  const API_URL_FAVOURITE = `${process.env.REACT_APP_API_URL}/measure`;
 
   const selectRef = useRef(null);
   const inputRef = useRef(null);
@@ -27,7 +26,7 @@ function SelectConverter(props) {
         setSelectedMeasure(options[selectRef.current.value]);
       }
     }
-    fetchMeasure()
+    props.fetchMeasure()
   }
   function changeOption() {
     const measureValue = parseInt(selectRef.current.value);
@@ -51,22 +50,6 @@ function SelectConverter(props) {
     console.log(selectedMeasure);
   }
 
-  function fetchMeasure() {
-    fetch(API_URL_FAVOURITE)
-      .then(async (response) => {
-        if (response.status !== 200) {
-          alert("Ha ocurrido un error en la petición");
-        }
-        return await response.json();
-      })
-      .then((responseParsed) => {
-        props.setSavedMeasure(responseParsed.data);
-      })
-      .catch((error) => {
-        console.error(error);
-        alert("Ha ocurrido un error en la petición");
-      });
-  }
   return (
     <div className="select">
       <p className="select__title">convert</p>
@@ -84,7 +67,7 @@ function SelectConverter(props) {
             <path d="M12.4697 8.46967C12.1768 8.76256 12.1768 9.23744 12.4697 9.53033L13.1893 10.25H3C2.58579 10.25 2.25 10.5858 2.25 11C2.25 11.4142 2.58579 11.75 3 11.75H13.1893L12.4697 12.4697C12.1768 12.7626 12.1768 13.2374 12.4697 13.5303C12.7626 13.8232 13.2374 13.8232 13.5303 13.5303L15.5303 11.5303C15.8232 11.2374 15.8232 10.7626 15.5303 10.4697L13.5303 8.46967C13.2374 8.17678 12.7626 8.17678 12.4697 8.46967Z" fill="white" />
           </svg>
         </button>
-        <Converter fetchMeasure= {fetchMeasure} selectedMeasure={selectedMeasure} savedMeasure={props.savedMeasure} setSavedMeasure={props.setSavedMeasure} inputRef={inputRef}></Converter>
+        <Converter fetchMeasure= {props.fetchMeasure} selectedMeasure={selectedMeasure} savedMeasure={props.savedMeasure} setSavedMeasure={props.setSavedMeasure} inputRef={inputRef}></Converter>
       </div>
     </div>
   );
