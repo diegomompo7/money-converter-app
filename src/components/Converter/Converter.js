@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from "react";
 function Converter(props) {
+  const API_URL_FAVOURITE = `${process.env.REACT_APP_API_URL}/measure`;
   const [result, setResult] = useState();
 
   function calculateConverter() {
@@ -14,8 +15,31 @@ function Converter(props) {
     } else if (props.inputRef.current.value === "") {
       alert("Debe introducir un número valido");
     } else {
-      const saved = props.inputRef?.current.value + " " + props.selectedMeasure.from + " --> " + result + " " + props.selectedMeasure.to;
-      props.setSavedMeasure([...props.savedMeasure, saved]);
+      const newFavouriteMeasure = {
+        numConverter: props.inputRef?.current.value,
+        fromConverter: props.selectedMeasure.from,
+        resultConverter: result,
+        toConverter: props.selectedMeasure.to
+      };
+
+      fetch(API_URL_FAVOURITE, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newFavouriteMeasure),
+      })
+        .then(async (response) => {
+          console.log(response.json)
+          return await response.json();
+        })
+        .then(() => {
+          props.fetchMeasure();
+        })
+        .catch((error) => {
+          alert("Ha ocurrido un error en la petición");
+          console.error(error);
+        });
       props.inputRef.current.value = "";
     }
   }
